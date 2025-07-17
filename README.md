@@ -58,40 +58,6 @@ All parameters are configurable at the beginning of the script:
    - Top-hat transform to extract linear features
 4. **Post-processing**: Remove small connected components
 
-## Tips for Better Results
-
-### For Urban Areas (many buildings)
-```python
-CANNY_LOW_THRESHOLD = 5      # Very low for subtle edges
-CANNY_HIGH_THRESHOLD = 20
-MIN_COMPONENT_SIZE = 150     # Higher to filter out building edges
-```
-
-### For Rural/Highway Images
-```python
-CANNY_LOW_THRESHOLD = 15
-CANNY_HIGH_THRESHOLD = 40
-DILATE_ITERATIONS = 3        # More dilation for sparse roads
-```
-
-### For High-Resolution Images
-```python
-GAUSSIAN_KERNEL_SIZE = (5, 5)
-MIN_LINE_LENGTH = 100        # Longer minimum line length
-MIN_COMPONENT_SIZE = 200
-```
-
-### If Getting Too Much Noise
-- Increase `MIN_COMPONENT_SIZE`
-- Increase morphological kernel sizes
-- Try adaptive thresholding: `USE_ADAPTIVE_THRESHOLD = True`
-
-### If Missing Roads
-- Decrease Canny thresholds
-- Increase `DILATE_ITERATIONS`
-- Decrease `MIN_COMPONENT_SIZE`
-- Enable bilateral filtering
-
 ## Example Results
 
 The output shows three stages of processing:
